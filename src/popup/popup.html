@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube to Perplexity</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <header class="popup__header">
+        <img src="../../icons/icon-32.png" alt="" width="24" height="24" />
+        <div>
+          <h1>YouTube to Perplexity</h1>
+          <p>Send videos to Perplexity with YouTube focus enabled.</p>
+        </div>
+      </header>
+
+      <section class="popup__section">
+        <label for="promptTemplate">Single video prompt</label>
+        <textarea id="promptTemplate" rows="4" spellcheck="false"></textarea>
+        <p class="hint">Placeholders: <code>{url}</code>, <code>{title}</code>. Default: <code>Summarize this video for me: {url}</code></p>
+      </section>
+
+      <section class="popup__section">
+        <label for="batchPromptTemplate">Batch prompt</label>
+        <textarea id="batchPromptTemplate" rows="4" spellcheck="false"></textarea>
+        <p class="hint">Placeholder: <code>{urls}</code></p>
+      </section>
+
+      <section class="popup__grid">
+        <div>
+          <label for="focus">Perplexity focus</label>
+          <select id="focus">
+            <option value="youtube">YouTube</option>
+            <option value="internet">All sources</option>
+            <option value="scholar">Academic</option>
+            <option value="reddit">Reddit</option>
+            <option value="writing">Writing</option>
+            <option value="wolfram">Wolfram</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="batchMode">Batch behavior</label>
+          <select id="batchMode">
+            <option value="single">One Perplexity tab</option>
+            <option value="separate">One tab per video</option>
+          </select>
+        </div>
+      </section>
+
+      <section class="popup__section popup__section--row">
+        <label class="checkbox">
+          <input id="openInBackground" type="checkbox" />
+          <span>Open in background tab</span>
+        </label>
+      </section>
+
+      <footer class="popup__footer">
+        <button id="save" type="button" class="btn btn--primary">Save settings</button>
+        <button id="sendCurrent" type="button" class="btn">Send current tab</button>
+      </footer>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="../lib/storage.js"></script>
+    <script src="../lib/perplexity.js"></script>
+    <script src="../lib/youtube.js"></script>
+    <script src="../lib/send.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

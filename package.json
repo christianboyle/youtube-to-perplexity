@@ -1,0 +1,16 @@
+{
+  "name": "youtube-to-perplexity",
+  "version": "1.0.14",
+  "private": true,
+  "description": "Firefox extension to send YouTube videos to Perplexity",
+  "scripts": {
+    "build": "web-ext build -s . -a web-ext-artifacts --overwrite-dest",
+    "package": "npm run build && cp web-ext-artifacts/youtube_to_perplexity-*.zip youtube-to-perplexity.xpi",
+    "sign": "web-ext sign -s . -a web-ext-artifacts --channel=listed",
+    "sign:unlisted": "web-ext sign -s . -a web-ext-artifacts --channel=unlisted",
+    "lint": "web-ext lint -s ."
+  },
+  "devDependencies": {
+    "web-ext": "^8.3.0"
+  }
+}
